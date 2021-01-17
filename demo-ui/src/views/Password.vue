@@ -1,9 +1,8 @@
 <template>
   <div>
     <h3>{{message}}</h3>
-    <h3>{{clients}}</h3>
-    <input type='password'>
-    <router-link :to="{ name: 'ClientsInfo',  params: { id:accessId }}">Отвори</router-link>
+    <input v-model="pass" id="pass" type='password'>
+    <router-link :to="{ name: 'ClientsInfo', params: { id:accessId, pass:pass }}">Отвори</router-link>
     <br>
     <router-link :to="{ name: 'Clients' }">Върни се в главното меню</router-link>
   </div>
@@ -17,8 +16,8 @@ export default {
     return {
       message: '',
       accessId: '',
-      pass: 0,
-      clients: {
+      pass: '',
+      clients: [{
         id: '',
         firstName: '',
         secondName: '',
@@ -38,7 +37,7 @@ export default {
         current: '',
         saving: '',
         credit: ''
-      },
+      }],
       fields: [
         { key: 'actions' }
       ],
@@ -77,6 +76,11 @@ export default {
     setData (response, id) {
       this.clients = response.data
       this.accessId = id
+    },
+    checkPass () {
+      if (this.pass === 0) {
+        this.$router.push('/clientsInfo')
+      }
     },
     accessClients (id) {
       ClientService.accessClients(id).then(

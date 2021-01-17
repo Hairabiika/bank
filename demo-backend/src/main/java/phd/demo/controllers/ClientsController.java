@@ -32,8 +32,19 @@ public class ClientsController {
         return clientsRepository.findAll();
     }
 
+
     @GetMapping("search/id")
-    public Clients getClientsId(@RequestParam(required = false) Long id) { return clientsRepository.findClientsById(id);}
+    public List<Clients> getClientsId(@RequestParam(required = false) Long id) {
+        List<Clients> cl = new ArrayList<Clients>();
+        cl.add(clientsRepository.findClientsById(id));
+        return cl;
+        // return clientsRepository.findClientsById(id);
+    }
+
+    @GetMapping("search/byId")
+    public Clients getClientsById(@RequestParam(required = false) Long id) {
+        return clientsRepository.findClientsById(id);
+    }
 
     @GetMapping("search/page")
     public ResponseEntity<?> paginateClient(@RequestParam(value = "currentPage", defaultValue = "1") int currentPage,
@@ -98,11 +109,11 @@ public class ClientsController {
         response.put("clients", client);
 
         if(isNew) {
-            response.put("message", "Uspeshno zapisan!");
+            response.put("message", "Успешно записан!");
         }
 
         else{
-            response.put("message", "Uspeshno redaktiran!");
+            response.put("message", "Успешно редактиран!");
         }
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
@@ -119,10 +130,10 @@ public class ClientsController {
 
     @GetMapping("search/name")
     public ResponseEntity<?> getClientsName(@RequestParam(required = false) String name) {
-        if (name == null || name.isBlank()) return ResponseEntity.ok().body("Ne ste zadali imeto kato kriterii");
+        if (name == null || name.isBlank()) return ResponseEntity.ok().body("Не сте задали името като критерий!");
 
         Optional<Clients> result = clientsRepository.findByFirstName(name.toLowerCase());
-        return result.isPresent()? ResponseEntity.ok(result) : ResponseEntity.ok("Ne e otkrit zapis po dadenite kriterii");
+        return result.isPresent()? ResponseEntity.ok(result) : ResponseEntity.ok("Не е открит запис по дадените критерии!");
     }
 
     @GetMapping("/access")

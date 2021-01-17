@@ -1,7 +1,6 @@
 <template>
   <div>
     <h3>{{message}}</h3>
-    <h3>{{clients}}</h3>
         <b-table
           striped
           hover
@@ -14,6 +13,14 @@
         </div>
         <div v-else>
           Няма град
+        </div>
+      </template>
+      <template v-slot:cell(sex)="data">
+        <div v-if="data.item.sex">
+          {{ data.item.sex.type }}
+        </div>
+        <div v-else>
+          Няма пари
         </div>
       </template>
       <template v-slot:cell(actions)="row">
@@ -84,6 +91,9 @@ export default {
     }
   },
   beforeRouteEnter (to, from, next) {
+    if (to.params.pass !== '0') {
+      next()
+    }
     if (to.params.id) {
       ClientService.getClientsId(to.params.id).then(
         response =>

@@ -54,6 +54,16 @@ class ClientService {
       })
   }
 
+  getClientsById (id) {
+    return axios.get(API_URL + '/search/byId',
+      {
+        params:
+          {
+            id: id
+          }
+      })
+  }
+
   deleteClientsId (id) {
     return axios.delete(API_URL + '/delete',
       {

@@ -1,7 +1,6 @@
 <template>
   <div>
     <h3>{{message}}</h3>
-    <h3>{{clients}}</h3>
     <input type="text" v-model="clients.firstName" >
     <input type="text" v-model="clients.secondName" >
     <input type="text" v-model="clients.lastName" >
@@ -53,7 +52,7 @@ export default {
   beforeRouteEnter (to, from, next) {
     console.log(to)
     if (to.params.id) {
-      ClientService.getClientsId(to.params.id).then(
+      ClientService.getClientsById(to.params.id).then(
         response =>
           next(vm =>
             vm.setData(response)

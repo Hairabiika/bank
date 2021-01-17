@@ -10,7 +10,7 @@ public class ErrorHandlerController implements  ErrorController {
 
     @RequestMapping ("/error")
     public ResponseEntity<?> error(){
-        return ResponseEntity.badRequest().body("Vuveli ste greshen URL");
+        return ResponseEntity.badRequest().body("Въвели сте грешен URL адрес!");
      }
 
     @Override
