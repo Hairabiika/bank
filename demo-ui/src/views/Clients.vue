@@ -3,6 +3,7 @@
     <h3>{{message}}</h3>
     <button v-on:click="searchClients">Търси</button>
     <b-table
+      sort-by="id"
       id="clientTable"
       striped
       hover
@@ -13,14 +14,13 @@
     >
       <template slot="top-row" slot-scope="{ fields }">
         <td v-for="(field, index) in fields" :key="field.id">
-          <div v-if="index === fields.length">
+          <div v-if="index === fields.length - 1">
           </div>
           <div v-else>
             <input v-model="filters[field.key]">
           </div>
         </td>
       </template>
-
       <template v-slot:cell(city)="data">
         <div v-if="data.item.city">
           {{ data.item.city.name }}
@@ -87,10 +87,10 @@ export default {
         credit: ''
       }],
       fields: [
-        { key: 'firstName', label: 'Име' },
-        { key: 'secondName', label: 'Презиме' },
-        { key: 'lastName', label: 'Фамилия' },
-        { key: 'nickName', label: 'Никнейм' },
+        { key: 'firstName', sortable: true, label: 'Име' },
+        { key: 'secondName', sortable: true, label: 'Презиме' },
+        { key: 'lastName', sortable: true, label: 'Фамилия' },
+        { key: 'nickName', sortable: true, label: 'Никнейм' },
         { key: 'actions', label: 'Действия' }
       ],
       filters: {
@@ -109,7 +109,6 @@ export default {
   },
   mounted () {
     this.searchClients()
-    this.clients.sort(this.clients.id)
   },
   methods: {
     searchClients () {

@@ -34,7 +34,8 @@ export default {
   data () {
     return {
       message: '',
-      clients: {
+      row: '',
+      clients: [{
         id: '',
         firstName: '',
         secondName: '',
@@ -54,7 +55,7 @@ export default {
         current: '',
         saving: '',
         credit: ''
-      },
+      }],
       fields: [
         { key: 'firstName', label: 'Име' },
         { key: 'secondName', label: 'Презиме' },
@@ -96,36 +97,6 @@ export default {
     setData (response) {
       console.log(response)
       this.clients = response.data
-    },
-    accessClients (id) {
-      ClientService.accessClients(id).then(
-        response => {
-          console.log(response)
-          this.message = response.data
-          this.searchClients()
-        },
-        error => {
-          this.content =
-            (error.response && error.response.data) ||
-            error.message ||
-            error.toString()
-        }
-      )
-    },
-    searchClients () {
-      ClientService.getClientsPage(this.filters, this.currentPage, this.perPage).then(
-        response => {
-          console.log(response)
-          this.clients = response.data.clients
-          this.rows = response.data.totalItems
-        },
-        error => {
-          this.content =
-            (error.response && error.response.data) ||
-            error.message ||
-            error.toString()
-        }
-      )
     },
     deleteClients (id) {
       ClientService.deleteClientsId(id).then(
