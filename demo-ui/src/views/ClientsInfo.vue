@@ -1,12 +1,14 @@
 <template>
-  <div>
+  <div style="background-image: url('https://i.pinimg.com/originals/16/84/50/168450927d230b5bbf9466ec704d393e.gif');
+  background-size: cover; height:930px; padding-top:80px;">
     <h3>{{message}}</h3>
-        <b-table
-          striped
-          hover
-          :fields="fields"
-          :items="clients"
-        >
+    <b-table
+      stacked
+      striped
+      hover
+      :fields="fields"
+      :items="clients"
+    >
       <template v-slot:cell(city)="data">
         <div v-if="data.item.city">
           {{ data.item.city.name }}
@@ -25,8 +27,8 @@
       </template>
       <template v-slot:cell(actions)="row">
         <router-link :to="{ name: 'ClientsTab', params: { id:row.item.id } }">Редактирай</router-link> |
-        <b-button variant="danger" v-on:click="deleteClients(row.item.id)">Изтрий</b-button> |
-        <router-link :to="{ name: 'Clients' }">Отвори</router-link>
+        <b-button variant="danger" v-on:click="deleteClients(row.item.id)">Изтрий</b-button>
+        <router-link :to="{ name: 'Clients' }"><h5>Връщане в главното меню</h5></router-link>
       </template>
     </b-table>
   </div>
@@ -91,7 +93,7 @@ export default {
     }
   },
   beforeRouteEnter (to, from, next) {
-    if (to.params.pass !== '0') {
+    if (to.params.pass !== '0000') {
       next()
     }
     if (to.params.id) {

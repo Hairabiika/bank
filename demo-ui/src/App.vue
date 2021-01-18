@@ -1,8 +1,8 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/clients">Clients</router-link>
-    </div>
+    <nav class="navbar navbar-dark bg-dark">
+      <router-link to="/clients"><h2>Clients</h2></router-link>
+    </nav>
     <router-view/>
   </div>
 </template>

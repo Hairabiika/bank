@@ -1,7 +1,8 @@
 <template>
-  <div>
+  <div style="background-image: url('https://blog.commlabindia.com/wp-content/uploads/2019/07/animated-gifs-corporate-training.gif');
+  background-size: cover; height:930px; padding-top:80px;">
     <h3>{{message}}</h3>
-    <button v-on:click="searchClients">Търси</button>
+    <button v-on:click="searchClients"><h3>Търси</h3></button>
     <b-table
       sort-by="id"
       id="clientTable"
@@ -40,7 +41,7 @@
       </template>
 
       <template v-slot:cell(actions)="row">
-        <router-link :to="{ name: 'Password', params: { id:row.item.id } }">Отвори</router-link>
+        <router-link :to="{ name: 'Password', params: { id:row.item.id } }"><h5>Отвори</h5></router-link>
       </template>
     </b-table>
     <b-pagination

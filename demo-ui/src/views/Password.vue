@@ -1,10 +1,11 @@
 <template>
-  <div>
+  <div style="background-image: url('https://images2.minutemediacdn.com/image/upload/c_crop,h_674,w_1200,x_0,y_113/f_auto,q_auto,w_1100/v1554999553/shape/mentalfloss/504605-publicdomain.gif');
+  background-size: cover; height:930px; padding-top:80px;">
     <h3>{{message}}</h3>
     <input v-model="pass" id="pass" type='password'>
     <router-link :to="{ name: 'ClientsInfo', params: { id:accessId, pass:pass }}">Отвори</router-link>
     <br>
-    <router-link :to="{ name: 'Clients' }">Върни се в главното меню</router-link>
+    <router-link :to="{ name: 'Clients' }"><h3>Върни се в главното меню</h3></router-link>
   </div>
 </template>
 <script>

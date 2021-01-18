@@ -1,5 +1,6 @@
 <template>
-  <div>
+  <div style="background-image: url('https://learn.g2.com/hs-fs/hubfs/plan%20gif%20marketing%20strategy.gif?width=500&name=plan%20gif%20marketing%20strategy.gif');
+  background-size: cover; height:930px; padding-top:80px;">
     <h3>{{message}}</h3>
     <input type="text" v-model="clients.firstName" >
     <input type="text" v-model="clients.secondName" >
@@ -13,8 +14,8 @@
     <input type="number" v-model="clients.saving" >
     <input type="number" v-model="clients.credit" >
     <br>
-    <button v-on:click="saveClients">Редактирай</button>
-    <router-link :to="{ name: 'Clients' }">Отвори</router-link>
+    <button v-on:click="saveClients"><h3>Редактирай</h3></button>
+    <router-link :to="{ name: 'Clients' }"><h5>Връщане в главното меню</h5></router-link>
   </div>
 </template>
 
