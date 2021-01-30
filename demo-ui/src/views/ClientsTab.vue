@@ -14,6 +14,7 @@
     <input type="number" v-model="clients.saving" >
     <input type="number" v-model="clients.credit" >
     <br>
+
     <button v-on:click="saveClients"><h3>Редактирай</h3></button>
     <router-link :to="{ name: 'Clients' }"><h5>Връщане в главното меню</h5></router-link>
   </div>

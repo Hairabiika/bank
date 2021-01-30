@@ -44,6 +44,7 @@
         <router-link :to="{ name: 'Password', params: { id:row.item.id } }"><h5>Отвори</h5></router-link>
       </template>
     </b-table>
+
     <b-pagination
       @input="searchClients"
       v-model="currentPage"
